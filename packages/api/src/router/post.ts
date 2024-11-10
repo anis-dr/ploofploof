@@ -10,7 +10,7 @@ export const postRouter = {
   all: publicProcedure.query(({ ctx }) => {
     // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
     return ctx.db.query.Post.findMany({
-      orderBy: desc(Post.id),
+      orderBy: [desc(Post.id)],
       limit: 10,
     });
   }),

@@ -90,9 +90,23 @@ pnpm i
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
 
+# Start the database
+./start-database.sh
+
 # Push the Drizzle schema to the database
 pnpm db:push
 ```
+
+The `start-database.sh` script will:
+
+- Check if Docker is installed and running
+- Start an existing database container if it exists
+- Create a new PostgreSQL container if none exists
+- Optionally generate a secure random password if you're using the default
+- Configure the database with the credentials from your `.env` file
+
+> [!NOTE]
+> Make sure you have Docker installed and running before starting the database. The script will create a container named "ploofploof-postgres" using the credentials from your `.env` file.
 
 ### 2. Configure Expo `dev`-script
 
